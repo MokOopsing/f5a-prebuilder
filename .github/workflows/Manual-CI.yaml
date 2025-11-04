@@ -8,16 +8,20 @@ jobs:
     container: archlinux:base-devel
     env:
       ABI: "armeabi-v7a,arm64-v8a,x86,x86_64"
-      NDK_VERSION: "25.2.9519653"
-      CMAKE_VERSION: "3.22.1"
+      NDK_VERSION: "28.0.13004108"
+      CMAKE_VERSION: "3.31.6"
       ANDROID_PLATFORM: "23"
 
     steps:
       - name: Install build dependencies
         run: |
           pacman -Syu --needed --noconfirm \
-            git unzip ghc cabal-install haskell-shake haskell-aeson-pretty \
-            cmake extra-cmake-modules ninja fmt fcitx5 boost python opencc jre-openjdk gperf
+            git unzip jre-openjdk \
+            ghc cabal-install haskell-shake haskell-aeson-pretty \
+            cmake extra-cmake-modules ninja \
+            boost \
+            python opencc \
+            gperf
       - name: Fetch source code
         uses: actions/checkout@v4
         with:
@@ -65,16 +69,16 @@ jobs:
         with:
           path: build/prebuilt.tar.zst
 
-      - name: Fetch fcitx5-android/prebuilt
+      - name: Fetch mokapsing/f5a-prebuilt
         #if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/checkout@v3
         with:
           path: prebuilt
-          repository: fcitx5-android/prebuilt
+          repository: mokapsing/f5a-prebuilt
           fetch-depth: 0
           persist-credentials: false
 
-      - name: Push to fcitx5-android/prebuilt
+      - name: Push to mokapsing/f5a-prebuilt
         #if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         working-directory: prebuilt
         run: |
@@ -89,8 +93,3 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto update"
           git push --set-upstream origin "HEAD:master" --follow-tags --atomic -f
-      - name: Trigger Repository B Action
-        run: |
-          curl -XPOST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            --data '{"event_type":"trigger-by-prebuilder","client_payload":{"ref":"refs/heads/new_cangjie_rime"}}' \
-            https://api.github.com/repos/mokapsing/fcitx5-android/dispatches
