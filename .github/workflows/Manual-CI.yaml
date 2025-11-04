@@ -36,12 +36,7 @@ jobs:
           git config --global --add safe.directory '*'
           # fetch libime submodule kenlm since it's not in .gitmodules
           git submodule update --init --recursive libime
-      - name: Update specific submodules to latest commit
-        run: |
-          git -C librime fetch origin master && git -C librime reset --hard origin/master
-          git -C librime-lua fetch origin master && git -C librime-lua reset --hard origin/master
-          git -C librime-octagram fetch origin master && git -C librime-octagram reset --hard origin/master
-          #git -C librime-predict fetch origin master && git -C librime-predict reset --hard origin/master
+
       - name: Setup Android NDK
         uses: android-actions/setup-android@v3
         with:
@@ -94,8 +89,3 @@ jobs:
           git add .
           git diff-index --quiet HEAD || git commit -m "Auto update"
           git push --set-upstream origin "HEAD:master" --follow-tags --atomic -f
-      - name: Trigger Repository B Action
-        run: |
-          curl -XPOST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            --data '{"event_type":"trigger-by-prebuilder","client_payload":{"ref":"refs/heads/new_cangjie_rime"}}' \
-            https://api.github.com/repos/mokapsing/fcitx5-android/dispatches
