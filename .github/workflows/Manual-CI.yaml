@@ -37,7 +37,7 @@ jobs:
           git submodule update --init --recursive libime
       - name: Update specific submodules to latest commit
         run: |
-          #git -C librime fetch origin master && git -C librime reset --hard origin/master
+          git -C librime fetch origin master && git -C librime reset --hard origin/master
           git -C librime-lua fetch origin master && git -C librime-lua reset --hard origin/master
           git -C librime-octagram fetch origin master && git -C librime-octagram reset --hard origin/master
           #git -C librime-predict fetch origin master && git -C librime-predict reset --hard origin/master
