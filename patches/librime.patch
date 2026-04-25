@@ -1,14 +1,5 @@
-From 15a8b479e66ac597a0fca4bede8012f5bb9df151 Mon Sep 17 00:00:00 2001
-From: Rocka <i@rocka.me>
-Date: Tue, 12 Nov 2024 22:16:16 +0800
-Subject: [PATCH 1/2] set file-prefix-map to relative path
-
----
- src/CMakeLists.txt | 2 ++
- 1 file changed, 2 insertions(+)
-
 diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
-index 16082869..c4a5b5ca 100644
+index 8faa61f8..671622ce 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
 @@ -166,6 +166,8 @@ if(BUILD_SHARED_LIBS)
