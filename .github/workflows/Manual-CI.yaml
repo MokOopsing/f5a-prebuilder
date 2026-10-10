@@ -44,8 +44,9 @@ jobs:
           git config --global --add safe.directory '*'
           # fetch libime submodule kenlm since it's not in .gitmodules
           git submodule update --init --recursive libime
-	  # fetch libchewing-data submodule
-	  git submodule update --init --recursive libchewing
+          # fetch libchewing-data submodule
+          git submodule update --init --recursive libchewing
+
       - name: Update specific submodules to latest commit
         run: |
           git -C librime fetch origin master && git -C librime reset --hard origin/master
