@@ -2,10 +2,10 @@ diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
 index 8faa61f8..671622ce 100644
 --- a/src/CMakeLists.txt
 +++ b/src/CMakeLists.txt
-@@ -166,6 +166,8 @@ if(BUILD_SHARED_LIBS)
+@@ -156,6 +156,8 @@ if(BUILD_SHARED_LIBS)
  else()
    add_library(rime-static STATIC ${rime_src})
-   target_link_libraries(rime-static ${rime_deps})
+   target_link_libraries(rime-static PUBLIC ${rime_deps})
 +  target_compile_options(rime-static PRIVATE "-ffile-prefix-map=${CMAKE_SOURCE_DIR}=.")
 +  target_compile_definitions(rime-static PRIVATE BOOST_DISABLE_CURRENT_LOCATION BOOST_ALL_NO_EMBEDDED_GDB_SCRIPTS)
    set_target_properties(rime-static PROPERTIES
