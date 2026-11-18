@@ -57,7 +57,7 @@ librimeRule = do
                   ( map
                       (\x -> buildEnvOut </> x </> buildEnvABI)
                       [ "boost",
-                        "glog",
+                        "spdlog",
                         "yaml-cpp",
                         "leveldb",
                         "marisa",
@@ -73,7 +73,7 @@ librimeRule = do
       [ "lua",
         "opencc",
         "boost",
-        "glog",
+        "spdlog",
         "yaml-cpp",
         "leveldb",
         "marisa"

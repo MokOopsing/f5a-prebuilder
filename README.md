@@ -37,7 +37,7 @@ both can be installed with `sdkmanager` command line tool.
 * lua (cmake build): [walterschell/Lua](https://github.com/walterschell/Lua)
 * opencc: [BYVoid/OpenCC](https://github.com/BYVoid/OpenCC)
 * anthy-unicode: [fujiwarat/anthy-unicode](https://github.com/fujiwarat/anthy-unicode)
-* glog: [google/glog](https://github.com/google/glog)
+* spdlog: [gabime/spdlog](https://github.com/gabime/spdlog)
 * yaml-cpp: [jbeder/yaml-cpp](https://github.com/jbeder/yaml-cpp)
 * leveldb: [google/leveldb](https://github.com/google/leveldb)
 * marisa-trie: [s-yata/marisa-trie](https://github.com/s-yata/marisa-trie)

@@ -1,0 +1,11 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -171,6 +171,7 @@ endif()
+ 
+ add_library(spdlog::spdlog ALIAS spdlog)
+ 
++target_compile_options(spdlog PRIVATE "-ffile-prefix-map=${CMAKE_SOURCE_DIR}=.")
+ set(SPDLOG_INCLUDES_LEVEL "")
+ if(SPDLOG_SYSTEM_INCLUDES)
+     set(SPDLOG_INCLUDES_LEVEL "SYSTEM")

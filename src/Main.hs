@@ -16,7 +16,6 @@ import Development.Shake.Config
 import Rules.AnthyData
 import Rules.Boost
 import Rules.Fcitx5
-import Rules.GLog
 import Rules.LevelDB
 import Rules.LibChewing
 import Rules.LibHangul
@@ -32,6 +31,7 @@ import Rules.Marisa
 import Rules.NlohmannJSON
 import Rules.OpenCC
 import Rules.RustToolchain
+import Rules.Spdlog
 import Rules.YAMLCpp
 import Rules.ZSTD
 
@@ -63,7 +63,7 @@ main = do
       boostRule
       zstdRule
       hostLibzstdRule
-      glogRule
+      spdlogRule
       yamlCppRule
       leveldbRule
       marisaSourceRule
@@ -92,7 +92,7 @@ main = do
                 "opencc",
                 "boost",
                 "zstd",
-                "glog",
+                "spdlog",
                 "yaml-cpp",
                 "leveldb",
                 "marisa",

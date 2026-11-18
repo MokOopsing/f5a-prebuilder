@@ -34,8 +34,7 @@ jobs:
       - name: Fetch source code
         uses: actions/checkout@v6
         with:
-          # this only sync submodules specified in .gitmodules,
-          # because we don't want recursive submodules in glog, librime, etc.
+          # Only fetch direct submodules; librime's bundled dependencies are unused.
           submodules: true
 
       - name: Fetch submodules
